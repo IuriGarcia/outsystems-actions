@@ -15,11 +15,11 @@ on:
   # Trigger a GitHub Actions workflow or GitHub App webhook
   repository_dispatch:
   
-# Parameters from API's trigger
-env:
-  triggeredby: ${{ github.event.client_payload.triggeredby }}
-  applicationlist: ${{ github.event.client_payload.applicationlist }}
-  targetenv: ${{ github.event.client_payload.target_environment}}
+# Parameters from API's trigger (BUGGY SYNTAX)
+#env:
+#  triggeredby: ${{ github.event.client_payload.triggeredby }}
+#  applicationlist: ${{ github.event.client_payload.applicationlist }}
+#  targetenv: ${{ github.event.client_payload.target_environment}}
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,4 +35,6 @@ jobs:
 
       - run: |
           echo Printing parameters from Jenkins:
-          echo TRIGGEREDBY: ${{ env.triggeredby }}
+          echo TRIGGEREDBY: ${{ github.event.client_payload.triggeredby }}
+          echo APPLICATIONLIST: ${{ github.event.client_payload.applicationlist }}
+          echo TARGETENV: ${{ github.event.client_payload.target_environment}}
