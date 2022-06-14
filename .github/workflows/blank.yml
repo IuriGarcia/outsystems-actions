@@ -18,8 +18,8 @@ on:
 # Parameters from API's trigger
 env:
   TRIGGEREDBY: ${{ github.event.client_payload.triggeredby }}
- # APPLICATIONLIST: ${{ github.event.client_payload.applicationlist }}
- # TARGETENV: ${{ github.event.client_payload.target_environment}}
+  APPLICATIONLIST: ${{ github.event.client_payload.applicationlist }}
+  TARGETENV: ${{ github.event.client_payload.target_environment}}
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -36,3 +36,5 @@ jobs:
       - run: |
           echo Printing parameters from Jenkins:
           echo TRIGGEREDBY: $TRIGGEREDBY
+          echo APPLICATIONLIST: $APPLICATIONLIST
+          echo TARTGETENV: $TARGETENV
